@@ -13,3 +13,9 @@ function dgd_menu_level_classes ( $classes, $item, $args, $depth ) {
   return $classes;
 }
 add_filter( 'nav_menu_css_class', 'dgd_menu_level_classes', 10, 4 );
+
+function dgd_submenu_level_classes ( $classes, $args, $depth ) {
+  $classes[] = 'submenu-level-' . ( $depth + 1 );
+  return $classes;
+}
+add_filter( 'nav_menu_submenu_css_class', 'dgd_submenu_level_classes', 10, 3 );
