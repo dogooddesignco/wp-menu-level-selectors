@@ -8,6 +8,12 @@
 * Author URI: http://dogood.design/
 **/
 
+function dgd_menu_link_level_classes( $atts, $item, $args, $depth ) {
+  $atts['class'] = 'menu-link-level-' . ( $depth + 1 );
+  return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'dgd_menu_link_level_classes', 10, 4 );
+
 function dgd_menu_level_classes ( $classes, $item, $args, $depth ) {
   $classes[] = 'menu-item-level-' . ( $depth + 1 );
   return $classes;
@@ -15,7 +21,7 @@ function dgd_menu_level_classes ( $classes, $item, $args, $depth ) {
 add_filter( 'nav_menu_css_class', 'dgd_menu_level_classes', 10, 4 );
 
 function dgd_submenu_level_classes ( $classes, $args, $depth ) {
-  $classes[] = 'submenu-level-' . ( $depth + 1 );
+  $classes[] = 'menu-sub-menu-level-' . ( $depth + 1 );
   return $classes;
 }
 add_filter( 'nav_menu_submenu_css_class', 'dgd_submenu_level_classes', 10, 3 );
